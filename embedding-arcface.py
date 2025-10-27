@@ -8,7 +8,7 @@ from tqdm import tqdm
 from insightface.app import FaceAnalysis
 
 app = FaceAnalysis(name='antelopev2')
-app.prepare(ctx_id=0)a
+app.prepare(ctx_id=0)
 
 parent_fold = '/workspace/datasetvol/mvhuman_data/face_bboxes'
 pattern = re.compile(r"^(\d{2}05)_img\.jpg$")
