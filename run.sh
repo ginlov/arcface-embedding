@@ -6,5 +6,6 @@ wget https://github.com/deepinsight/insightface/releases/download/v0.7/antelopev
 unzip /root/.insightface/models/antelopev2.zip -d /root/.insightface/models/
 
 rm /root/.insightface/models/antelopev2.zip
+export OMP_NUM_THREADS=1
 
 python embedding-arcface.py
