@@ -51,7 +51,7 @@ def process_objects(args):
                     faces = app.get(img)
                     if len(faces) == 0:
                         continue
-                    data = faces[0].embedding
+                    data = faces[0].embedding.tolist()
                     local_data[obj][cam][file] = data
     return local_data
 
