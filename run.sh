@@ -8,4 +8,4 @@ unzip /root/.insightface/models/antelopev2.zip -d /root/.insightface/models/
 rm /root/.insightface/models/antelopev2.zip
 export OMP_NUM_THREADS=1
 
-python embedding-arcface.py
+python3 embedding-arcface.py
