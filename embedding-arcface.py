@@ -7,7 +7,7 @@ import sys
 from tqdm import tqdm
 from insightface.app import FaceAnalysis
 
-app = FaceAnalysis(name='antelopev2')
+app = FaceAnalysis(name='antelopev2', allowed_modules=['detection', 'recognition'])
 app.prepare(ctx_id=0)
 
 parent_fold = '/workspace/datasetvol/mvhuman_data/face_bboxes'
