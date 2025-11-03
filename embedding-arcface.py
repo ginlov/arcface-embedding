@@ -35,7 +35,7 @@ def process_objects(args):
 
         obj_path = os.path.join(source_fold, obj, 'images_lr')
         local_data[obj] = {}
-        pattern = re.compile(r"^(\d{2}05)_img\.jpg$")
+        pattern = re.compile(r"^(\d{2}05)_img\.(png|jpg|jpeg|bmp|gif)$", re.IGNORECASE)
 
         for cam in os.listdir(obj_path):
             cam_path = os.path.join(obj_path, cam)
