@@ -62,7 +62,11 @@ def get_pod_index():
 
 if __name__ == "__main__":
     object_ranges = range(100001, 100501)
-    all_objects = list(object_ranges)
+    all_objects = os.listdir(source_fold)
+    # Get folder only
+    all_objects = [obj for obj in all_objects if os.path.isdir(os.path.join(source_fold, obj))]
+    # Filter object ranges which are already processed
+    all_objects = [obj for obj in all_objects if int(obj) in object_ranges]
     all_objects = [str(obj) for obj in all_objects]
     all_objects.sort()  # ensure stable order
 
@@ -82,7 +86,7 @@ if __name__ == "__main__":
     output_dir = "/workspace/datasetvol/mvhuman_data/arcface_embeddings/relit_images"
     os.makedirs(output_dir, exist_ok=True)
 
-    out_path = os.path.join(output_dir, f"data_part_{pod_idnex}.json")
+    out_path = os.path.join(output_dir, f"data_part_{pod_idnex}_all.json")
     with open(out_path, 'w') as f:
         json.dump(result, f)
     print(f"✅ Saved {out_path}")
