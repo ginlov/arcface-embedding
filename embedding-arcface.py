@@ -11,7 +11,7 @@ app = FaceAnalysis(name='antelopev2', allowed_modules=['detection', 'recognition
 app.prepare(ctx_id=0)
 
 pattern = re.compile(r"^(\d{2}05)_img\.jpg$")
-source_fold = '/workspace/datasetvol/mvhuman_data/relit_images'
+source_fold = '/workspace/datasetvol/mvhuman_data/mv_captures'
 
 def process_objects(args):
     """Process a list of objects and return their data."""
@@ -83,7 +83,7 @@ if __name__ == "__main__":
     result = process_objects((object_list, pod_idnex))
 
     # Save each chunk’s results separately
-    output_dir = "/workspace/datasetvol/mvhuman_data/arcface_embeddings/relit_images"
+    output_dir = "/workspace/datasetvol/mvhuman_data/arcface_embeddings/mvhn"
     os.makedirs(output_dir, exist_ok=True)
 
     out_path = os.path.join(output_dir, f"data_part_{pod_idnex}_all.json")
