@@ -47,7 +47,10 @@ def process_objects(args):
             for file in selected_images:
                 if pattern.match(file):
                     img = cv2.imread(os.path.join(cam_path, file))
-                    faces = app.get(img)
+                    try:
+                        faces = app.get(img)
+                    except Exception as e:
+                        faces = []
                     if len(faces) == 0:
                         continue
                     data = faces[0].embedding.tolist()
@@ -79,6 +82,10 @@ if __name__ == "__main__":
     # Get pod index
     pod_idnex = get_pod_index()
     object_list = chunks[pod_idnex]
+
+    if os.path.exists(os.path.join("/workspace/datasetvol/mvhuman_data/arcface_embeddings/mvhn", f"data_part_{pod_idnex}_all.json")):
+        print(f"✅ Pod {pod_idnex} already processed. Exiting.")
+        sys.exit(0)
 
     result = process_objects((object_list, pod_idnex))
 
